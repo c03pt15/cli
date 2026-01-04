@@ -99,6 +99,13 @@ input, input:focus {
     overflow: hidden;
 }
 
+/* Remove container padding on mobile for full height terminal */
+@media (max-width: 768px) {
+    .container {
+        padding: 0;
+    }
+}
+
 .terminal-header {
     border: 2px solid #00ff00;
     padding: 15px;
@@ -140,7 +147,6 @@ input, input:focus {
 
 @media (max-width: 360px) {
     .container {
-        padding: 2px;
         --header-height: 50px;
     }
 
@@ -156,7 +162,7 @@ input, input:focus {
 
     .terminal-window {
         padding: 6px;
-        max-height: calc(100vh - var(--header-height, 50px));
+        height: calc(100vh - var(--header-height, 50px));
     }
 }
 
@@ -199,12 +205,11 @@ input, input:focus {
 
 .terminal-window {
     border: 2px solid #00ff00;
-    flex: 1;
     padding: 20px;
     background: rgba(15, 15, 15, 0.95);
     box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
     overflow-y: auto;
-    max-height: calc(100vh - var(--header-height, 120px));
+    height: calc(100vh - var(--header-height, 120px));
     box-sizing: border-box;
 }
 
@@ -451,7 +456,6 @@ input, input:focus {
 
 @media (max-width: 768px) {
     .container {
-        padding: 5px;
         --header-height: 80px;
     }
 
@@ -471,7 +475,7 @@ input, input:focus {
 
     .terminal-window {
         padding: 10px;
-        max-height: calc(100vh - var(--header-height, 80px));
+        height: calc(100vh - var(--header-height, 80px));
     }
 
     .terminal-line {
@@ -524,7 +528,6 @@ input, input:focus {
 /* Extra small screens (phones in portrait) */
 @media (max-width: 480px) {
     .container {
-        padding: 3px;
         --header-height: 60px;
     }
 
@@ -541,7 +544,7 @@ input, input:focus {
 
     .terminal-window {
         padding: 8px;
-        max-height: calc(100vh - var(--header-height, 60px));
+        height: calc(100vh - var(--header-height, 60px));
     }
 
     .terminal-line {
