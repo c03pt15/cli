@@ -12,7 +12,11 @@ body {
     font-family: 'Source Code Pro', monospace;
     overflow: hidden;
     cursor: pointer;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
+
 
 body * {
     cursor: pointer !important;
@@ -86,19 +90,29 @@ input, input:focus {
 
 .container {
     max-width: 100%;
-    margin: 0;
+    margin: 0; 
     padding: 10px;
-    height: 99vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
     overflow: hidden;
+}
+
+/* Remove container padding on mobile for full height terminal */
+@media (max-width: 768px) {
+    .container {
+        padding: 0;
+    }
 }
 
 .terminal-header {
     border: 2px solid #00ff00;
-    height: 19vh;
     padding: 15px;
-    margin-bottom: 10px;
-    background: rgba(20, 20, 20, 0.8);
+    background: rgba(20, 20, 20, 0.95);
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    flex-shrink: 0;
+    z-index: 10;
 }
 
 .ascii-art {
@@ -110,13 +124,92 @@ input, input:focus {
     color: #00ff41;
 }
 
+/* Responsive ASCII art */
+@media (max-width: 1024px) {
+    .ascii-art {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ascii-art {
+        font-size: 6px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ascii-art {
+        font-size: 5px;
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .container {
+        --header-height: 50px;
+    }
+
+    .terminal-header {
+        padding: 4px;
+    }
+
+    .ascii-art {
+        font-size: 4px;
+        margin-bottom: 5px;
+    }
+
+    .terminal-window {
+        padding: 6px;
+        height: calc(100vh - var(--header-height, 50px));
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .terminal-window {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .container {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    #command-input,
+    .input-line {
+        -webkit-user-select: text;
+        -khtml-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    }
+
+    /* Improve tap targets on mobile */
+    .input-line {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    #command-input {
+        min-height: 32px;
+        padding: 8px 4px;
+    }
+}
+
 .terminal-window {
     border: 2px solid #00ff00;
-    height: 77vh;
     padding: 20px;
     background: rgba(15, 15, 15, 0.95);
     box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
     overflow-y: auto;
+    height: calc(100vh - var(--header-height, 120px));
+    box-sizing: border-box;
 }
 
 #terminal-content {
@@ -362,29 +455,130 @@ input, input:focus {
 
 @media (max-width: 768px) {
     .container {
-        padding: 5px;
+        --header-height: 80px;
     }
-    
+
     .terminal-header {
-        padding: 10px;
-        margin-bottom: 5px;
+        padding: 8px;
+        border: 1px solid #00ff00;
     }
-    
-    .terminal-window {
-        min-height: 80vh;
-        padding: 15px;
-    }
-    
+
     .ascii-art {
-        font-size: 6px;
+        font-size: 5px;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        white-space: pre-wrap;
+        word-break: break-all;
     }
-    
+
+    .terminal-window {
+        padding: 10px;
+        height: calc(100vh - var(--header-height, 80px));
+    }
+
+    .terminal-line {
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .output {
+        font-size: 13px;
+        margin-left: 15px;
+    }
+
+    .prompt {
+        font-size: 13px;
+    }
+
+    .command {
+        font-size: 13px;
+    }
+
+    #command-input {
+        font-size: 13px;
+        margin-left: 8px;
+    }
+
+    .input-line {
+        margin: 15px 0;
+    }
+
+    .json-display {
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 12px;
+    }
+
     .tech-stack {
         grid-template-columns: 1fr;
+        gap: 10px;
     }
-    
+
+    .tech-item {
+        padding: 10px;
+    }
+
     .help-commands {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Extra small screens (phones in portrait) */
+@media (max-width: 480px) {
+    .container {
+        --header-height: 60px;
+    }
+
+    .terminal-header {
+        padding: 6px;
+    }
+
+    .ascii-art {
+        font-size: 4px;
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    .terminal-window {
+        padding: 8px;
+        height: calc(100vh - var(--header-height, 60px));
+    }
+
+    .terminal-line {
+        margin-bottom: 6px;
+        font-size: 12px;
+    }
+
+    .output {
+        font-size: 11px;
+        margin-left: 10px;
+    }
+
+    .prompt {
+        font-size: 12px;
+    }
+
+    .command {
+        font-size: 12px;
+    }
+
+    #command-input {
+        font-size: 12px;
+        margin-left: 5px;
+    }
+
+    .input-line {
+        margin: 10px 0;
+    }
+
+    .json-display {
+        padding: 8px;
+        margin: 8px 0;
+        font-size: 11px;
+    }
+
+    .tech-item {
+        padding: 8px;
     }
 }
 
