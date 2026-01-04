@@ -74,7 +74,7 @@ function updateCursorPosition() {
 function autoScrollDown() {
     const terminalWindow = document.querySelector('.terminal-window');
 
-    setTimeout(() => {
+    setTimeout(() => { 
         // Only scroll the terminal window content, don't scroll the entire page
         terminalWindow.scrollTop = terminalWindow.scrollHeight;
     }, 100);
