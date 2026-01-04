@@ -10,16 +10,13 @@ body {
     background: #0f0f0f;
     color: #00ff00;
     font-family: 'Source Code Pro', monospace;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     cursor: pointer;
-    min-height: 100vh;
-    scroll-behavior: auto; /* Prevent smooth scrolling that might interfere */
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
-html {
-    scroll-behavior: auto; /* Ensure no smooth scrolling interferes */
-}
 
 body * {
     cursor: pointer !important;
@@ -99,6 +96,7 @@ input, input:focus {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .terminal-header {
@@ -143,7 +141,6 @@ input, input:focus {
 @media (max-width: 360px) {
     .container {
         padding: 2px;
-        height: 100vh;
         --header-height: 50px;
     }
 
@@ -453,13 +450,8 @@ input, input:focus {
 }
 
 @media (max-width: 768px) {
-    body {
-        overflow-x: hidden;
-    }
-
     .container {
         padding: 5px;
-        height: 100vh;
         --header-height: 80px;
     }
 
@@ -533,7 +525,6 @@ input, input:focus {
 @media (max-width: 480px) {
     .container {
         padding: 3px;
-        height: 100vh;
         --header-height: 60px;
     }
 

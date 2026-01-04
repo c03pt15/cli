@@ -73,21 +73,10 @@ function updateCursorPosition() {
 
 function autoScrollDown() {
     const terminalWindow = document.querySelector('.terminal-window');
-    const container = document.querySelector('.container');
-    
+
     setTimeout(() => {
+        // Only scroll the terminal window content, don't scroll the entire page
         terminalWindow.scrollTop = terminalWindow.scrollHeight;
-        
-        const windowHeight = window.innerHeight;
-        const currentScroll = window.pageYOffset;
-        const terminalBottom = terminalWindow.getBoundingClientRect().bottom + currentScroll;
-        
-        if (terminalBottom > windowHeight + currentScroll) {
-            window.scrollTo({
-                top: terminalBottom - windowHeight + 50,
-                behavior: 'smooth'
-            });
-        }
     }, 100);
 }
 
@@ -382,12 +371,15 @@ function waitAsync(ms) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Ensure page starts at top on mobile
+    window.scrollTo(0, 0);
+
     if (!bootAnimationExecuted) {
         setTimeout(() => {
             bootAnimation();
         }, 300);
     }
-    
+
     setTimeout(() => {
         updateCursorPosition();
     }, 100);
@@ -395,6 +387,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
+        // Ensure page starts at top on mobile
+        window.scrollTo(0, 0);
+
         if (!bootAnimationExecuted) {
             setTimeout(() => {
                 bootAnimation();
@@ -405,6 +400,9 @@ if (document.readyState === 'loading') {
         }, 100);
     });
 } else {
+    // Ensure page starts at top on mobile
+    window.scrollTo(0, 0);
+
     if (!bootAnimationExecuted) {
         setTimeout(() => {
             bootAnimation();
