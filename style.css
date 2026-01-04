@@ -473,7 +473,7 @@ input, input:focus {
 
     .terminal-window {
         padding: 10px;
-        height: 100%;
+        height: 70vh;
     }
 
     .terminal-line {
@@ -541,7 +541,7 @@ input, input:focus {
 
     .terminal-window {
         padding: 8px;
-        height: 100%;
+        height: 70vh;
     }
 
     .terminal-line {
