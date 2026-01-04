@@ -90,17 +90,19 @@ input, input:focus {
     max-width: 100%;
     margin: 0;
     padding: 10px;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .terminal-header {
     border: 2px solid #00ff00;
     padding: 15px;
-    margin-bottom: 10px;
-    background: rgba(20, 20, 20, 0.8);
+    background: rgba(20, 20, 20, 0.95);
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    flex-shrink: 0;
+    z-index: 10;
 }
 
 .ascii-art {
@@ -134,9 +136,25 @@ input, input:focus {
 }
 
 @media (max-width: 360px) {
+    .container {
+        padding: 2px;
+        height: 100vh;
+        --header-height: 50px;
+    }
+
+    .terminal-header {
+        padding: 4px;
+        --header-height: 50px;
+    }
+
     .ascii-art {
         font-size: 4px;
         margin-bottom: 5px;
+    }
+
+    .terminal-window {
+        padding: 6px;
+        max-height: calc(100vh - var(--header-height, 50px));
     }
 }
 
@@ -180,11 +198,12 @@ input, input:focus {
 .terminal-window {
     border: 2px solid #00ff00;
     flex: 1;
-    min-height: 300px;
     padding: 20px;
     background: rgba(15, 15, 15, 0.95);
     box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
     overflow-y: auto;
+    max-height: calc(100vh - var(--header-height, 120px));
+    box-sizing: border-box;
 }
 
 #terminal-content {
@@ -435,13 +454,14 @@ input, input:focus {
 
     .container {
         padding: 5px;
-        min-height: 100vh;
+        height: 100vh;
+        --header-height: 80px;
     }
 
     .terminal-header {
         padding: 8px;
-        margin-bottom: 5px;
         border: 1px solid #00ff00;
+        --header-height: 80px;
     }
 
     .ascii-art {
@@ -454,8 +474,7 @@ input, input:focus {
 
     .terminal-window {
         padding: 10px;
-        min-height: calc(100vh - 120px);
-        max-height: calc(100vh - 100px);
+        max-height: calc(100vh - var(--header-height, 80px));
     }
 
     .terminal-line {
@@ -509,11 +528,13 @@ input, input:focus {
 @media (max-width: 480px) {
     .container {
         padding: 3px;
+        height: 100vh;
+        --header-height: 60px;
     }
 
     .terminal-header {
         padding: 6px;
-        margin-bottom: 3px;
+        --header-height: 60px;
     }
 
     .ascii-art {
@@ -524,8 +545,7 @@ input, input:focus {
 
     .terminal-window {
         padding: 8px;
-        min-height: calc(100vh - 100px);
-        max-height: calc(100vh - 80px);
+        max-height: calc(100vh - var(--header-height, 60px));
     }
 
     .terminal-line {
