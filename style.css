@@ -10,15 +10,8 @@ body {
     background: #0f0f0f;
     color: #00ff00;
     font-family: 'Source Code Pro', monospace;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     cursor: pointer;
-    min-height: 100vh;
-    scroll-behavior: auto; /* Prevent smooth scrolling that might interfere */
-}
-
-html {
-    scroll-behavior: auto; /* Ensure no smooth scrolling interferes */
 }
 
 body * {
@@ -95,19 +88,17 @@ input, input:focus {
     max-width: 100%;
     margin: 0;
     padding: 10px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+    height: 99vh;
+    overflow: hidden;
 }
 
 .terminal-header {
     border: 2px solid #00ff00;
+    height: 19vh;
     padding: 15px;
-    background: rgba(20, 20, 20, 0.95);
+    margin-bottom: 10px;
+    background: rgba(20, 20, 20, 0.8);
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-    flex-shrink: 0;
-    z-index: 10;
 }
 
 .ascii-art {
@@ -119,96 +110,13 @@ input, input:focus {
     color: #00ff41;
 }
 
-/* Responsive ASCII art */
-@media (max-width: 1024px) {
-    .ascii-art {
-        font-size: 8px;
-    }
-}
-
-@media (max-width: 768px) {
-    .ascii-art {
-        font-size: 6px;
-        margin-bottom: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .ascii-art {
-        font-size: 5px;
-        margin-bottom: 8px;
-    }
-}
-
-@media (max-width: 360px) {
-    .container {
-        padding: 2px;
-        height: 100vh;
-        --header-height: 50px;
-    }
-
-    .terminal-header {
-        padding: 4px;
-        --header-height: 50px;
-    }
-
-    .ascii-art {
-        font-size: 4px;
-        margin-bottom: 5px;
-    }
-
-    .terminal-window {
-        padding: 6px;
-        max-height: calc(100vh - var(--header-height, 50px));
-    }
-}
-
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-    .terminal-window {
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .container {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-    #command-input,
-    .input-line {
-        -webkit-user-select: text;
-        -khtml-user-select: text;
-        -moz-user-select: text;
-        -ms-user-select: text;
-        user-select: text;
-    }
-
-    /* Improve tap targets on mobile */
-    .input-line {
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-    }
-
-    #command-input {
-        min-height: 32px;
-        padding: 8px 4px;
-    }
-}
-
 .terminal-window {
     border: 2px solid #00ff00;
-    flex: 1;
+    height: 77vh;
     padding: 20px;
     background: rgba(15, 15, 15, 0.95);
     box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
     overflow-y: auto;
-    max-height: calc(100vh - var(--header-height, 120px));
-    box-sizing: border-box;
 }
 
 #terminal-content {
@@ -453,141 +361,30 @@ input, input:focus {
 }
 
 @media (max-width: 768px) {
-    body {
-        overflow-x: hidden;
-    }
-
     .container {
         padding: 5px;
-        height: 100vh;
-        --header-height: 80px;
     }
-
+    
     .terminal-header {
-        padding: 8px;
-        border: 1px solid #00ff00;
-        --header-height: 80px;
+        padding: 10px;
+        margin-bottom: 5px;
     }
-
-    .ascii-art {
-        font-size: 5px;
-        line-height: 1.1;
-        margin-bottom: 10px;
-        white-space: pre-wrap;
-        word-break: break-all;
-    }
-
+    
     .terminal-window {
-        padding: 10px;
-        max-height: calc(100vh - var(--header-height, 80px));
+        min-height: 80vh;
+        padding: 15px;
     }
-
-    .terminal-line {
-        margin-bottom: 8px;
-        font-size: 14px;
+    
+    .ascii-art {
+        font-size: 6px;
     }
-
-    .output {
-        font-size: 13px;
-        margin-left: 15px;
-    }
-
-    .prompt {
-        font-size: 13px;
-    }
-
-    .command {
-        font-size: 13px;
-    }
-
-    #command-input {
-        font-size: 13px;
-        margin-left: 8px;
-    }
-
-    .input-line {
-        margin: 15px 0;
-    }
-
-    .json-display {
-        padding: 10px;
-        margin: 10px 0;
-        font-size: 12px;
-    }
-
+    
     .tech-stack {
         grid-template-columns: 1fr;
-        gap: 10px;
     }
-
-    .tech-item {
-        padding: 10px;
-    }
-
+    
     .help-commands {
         grid-template-columns: 1fr;
-    }
-}
-
-/* Extra small screens (phones in portrait) */
-@media (max-width: 480px) {
-    .container {
-        padding: 3px;
-        height: 100vh;
-        --header-height: 60px;
-    }
-
-    .terminal-header {
-        padding: 6px;
-        --header-height: 60px;
-    }
-
-    .ascii-art {
-        font-size: 4px;
-        line-height: 1;
-        margin-bottom: 8px;
-    }
-
-    .terminal-window {
-        padding: 8px;
-        max-height: calc(100vh - var(--header-height, 60px));
-    }
-
-    .terminal-line {
-        margin-bottom: 6px;
-        font-size: 12px;
-    }
-
-    .output {
-        font-size: 11px;
-        margin-left: 10px;
-    }
-
-    .prompt {
-        font-size: 12px;
-    }
-
-    .command {
-        font-size: 12px;
-    }
-
-    #command-input {
-        font-size: 12px;
-        margin-left: 5px;
-    }
-
-    .input-line {
-        margin: 10px 0;
-    }
-
-    .json-display {
-        padding: 8px;
-        margin: 8px 0;
-        font-size: 11px;
-    }
-
-    .tech-item {
-        padding: 8px;
     }
 }
 
