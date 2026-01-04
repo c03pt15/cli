@@ -14,6 +14,11 @@ body {
     overflow-y: auto;
     cursor: pointer;
     min-height: 100vh;
+    scroll-behavior: auto; /* Prevent smooth scrolling that might interfere */
+}
+
+html {
+    scroll-behavior: auto; /* Ensure no smooth scrolling interferes */
 }
 
 body * {
