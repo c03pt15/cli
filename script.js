@@ -16,7 +16,7 @@ const customCursor = document.getElementById('custom-cursor');
 
 function navigateHistory(direction) {
     if (commandHistory.length === 0) return;
-    
+
     if (direction === 'up') {
         if (historyIndex === -1) {
             historyIndex = commandHistory.length - 1;
@@ -33,7 +33,7 @@ function navigateHistory(direction) {
             input.value = '';
         }
     }
-    
+
     setTimeout(() => {
         input.setSelectionRange(input.value.length, input.value.length);
         updateCursorPosition();
@@ -41,16 +41,16 @@ function navigateHistory(direction) {
 }
 
 function startDynamicUpdates() {
-   // Dynamic updates for other elements can be added here
-   // Bugs fixed count is now persistent and set once at session start
+    // Dynamic updates for other elements can be added here
+    // Bugs fixed count is now persistent and set once at session start
 }
 
 function updateCursorPosition() {
     if (!customCursor || !input) return;
-    
+
     const inputValue = input.value;
     const promptElement = input.parentElement.querySelector('.prompt');
-    
+
     const tempSpan = document.createElement('span');
     tempSpan.style.font = window.getComputedStyle(input).font;
     tempSpan.style.fontFamily = input.style.fontFamily || 'Source Code Pro, monospace';
@@ -60,13 +60,13 @@ function updateCursorPosition() {
     tempSpan.style.whiteSpace = 'pre';
     tempSpan.textContent = inputValue;
     document.body.appendChild(tempSpan);
-    
+
     const textWidth = tempSpan.offsetWidth;
     document.body.removeChild(tempSpan);
-    
+
     const promptWidth = promptElement ? promptElement.offsetWidth : 0;
     const inputMarginLeft = parseInt(window.getComputedStyle(input).marginLeft) || 10;
-    
+
     customCursor.style.left = `${promptWidth + inputMarginLeft + textWidth}px`;
 }
 
@@ -74,7 +74,7 @@ function updateCursorPosition() {
 function autoScrollDown() {
     const terminalWindow = document.querySelector('.terminal-window');
 
-    setTimeout(() => { 
+    setTimeout(() => {
         // Only scroll the terminal window content, don't scroll the entire page
         terminalWindow.scrollTop = terminalWindow.scrollHeight;
     }, 100);
@@ -188,12 +188,12 @@ function bootAnimation(forceReset = false) {
 function showEnterPrompt() {
     const terminal = document.getElementById('terminal-content');
     const inputLine = document.querySelector('.input-line');
-    
+
     // Hide the input line until Enter is pressed
     if (inputLine) {
         inputLine.style.display = 'none';
     }
-    
+
     // Add simple "Press enter to continue" message
     const enterPrompt = document.createElement('div');
     enterPrompt.className = 'terminal-line';
@@ -205,31 +205,31 @@ function showEnterPrompt() {
         </div>
     `;
     terminal.appendChild(enterPrompt);
-    
+
     autoScrollDown();
-    
+
     setupEnterListener();
 }
 
 function setupEnterListener() {
     if (enterListenersActive) return;
     enterListenersActive = true;
-    
+
     const input = document.getElementById('command-input');
-    
+
     const enterHandler = (e) => {
         if (e.key === 'Enter') {
             cleanupListeners(enterHandler, clickHandler);
-            
+
             clearAndShowNormalContent();
         }
     };
-    
+
     const clickHandler = () => {
         cleanupListeners(enterHandler, clickHandler);
         clearAndShowNormalContent();
     };
-    
+
     // Añadir listeners
     document.addEventListener('keypress', enterHandler);
     input.addEventListener('keypress', enterHandler);
@@ -266,11 +266,9 @@ async function clearAndShowNormalContent() {
         await typeCommandLineAsync('cat skills.json');
         const skillsJsonLines = [
             '{',
-            '&nbsp;&nbsp;&nbsp;&nbsp;"languages": ["Java", "Python", "C#", "Javascript", "Typescript", "SQL", "PLSQL", "Bash"],',
-            '&nbsp;&nbsp;&nbsp;&nbsp;"frameworks": ["Spring Framework", "Angular", "Hibernate", "JPA/JDBC", "JSF/JBoss", "Thymeleaf", "Lombok"],',
-            '&nbsp;&nbsp;&nbsp;&nbsp;"database": ["PostgreSQL", "MySQL", "MariaDB", "MongoDB", "Redis", "Oracle", "ElasticSeach", "SQLite"],',
-            '&nbsp;&nbsp;&nbsp;&nbsp;"tools": ["Docker", "Docker-compose", "Jenkins", "Git", "Gitflow", "Maven", "Gradle"],',
-            '&nbsp;&nbsp;&nbsp;&nbsp;"architecture": ["Microservice", "REST APIs", "Event-driven", "SOLID"]',
+            '&nbsp;&nbsp;&nbsp;&nbsp;"languages": ["Javascript", "Typescript", "SQL", "PLSQL", "Bash"],',
+            '&nbsp;&nbsp;&nbsp;&nbsp;"database": ["PostgreSQL", "MySQL", "MariaDB", "MongoDB", "SQLite"],',
+            '&nbsp;&nbsp;&nbsp;&nbsp;"tools": ["Docker", "Git", "Gitflow"],',
             '}'
         ];
         let jsonContainer = null;
@@ -351,7 +349,7 @@ function typeCommandLineAsync(cmdText) {
     });
 }
 
-function addOutputLineAsync(line, delay=250) {
+function addOutputLineAsync(line, delay = 250) {
     return new Promise(resolve => {
         setTimeout(() => {
             const terminal = document.getElementById('terminal-content');
@@ -417,7 +415,7 @@ if (document.readyState === 'loading') {
 const commands = {
     help: {
         desc: "Show all available commands",
-        action: () =>  `
+        action: () => `
 Available commands:
 
 help        - Show this help message  
@@ -465,7 +463,7 @@ Status: { "available": <span id="available-status">false</span>, "caffeine_level
     neofetch: {
         desc: "A fast, highly customizable system info script",
         action: () => `
-                     ./o.                  ruben@dev-pc 
+                     ./o.                  coeptis@dev-pc 
                    ./sssso-                -------------- 
                  ':osssssss+-              OS: EndeavourOS Linux x86_64 
                ':+sssssssssso/.            Kernel: 6.12.7-arch1-1 
@@ -500,13 +498,12 @@ Experience: 5+ years in enterprise development
 Focus: System integration, REST APIs and scalable architectures
 
 Current status: {
-    "seeking_opportunities": true,
-    "open_to_remote": "mandatory",
-    "preferred_stack": "Java + Spring Boot + MariaDB"
+    "seeking_opportunities": false,
+    "open_to_remote": "mandatory"    
 }
         `
     },
-    
+
     skills: {
         desc: "Resume of my technology stack",
         action: () => `
@@ -539,8 +536,8 @@ Current status: {
         desc: "My complete technology stack",
         action: () => `
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║                           TECH STACK - José Rubén Daza Hernández             ║
-║                              Java Backend Developer                          ║
+║                           TECH STACK - Ghislain Girard                       ║
+║                              Senior Web Developer                            ║
 ╠══════════════════════════════════════════════════════════════════════════════╣
 ║ Backend Languages:                                                           ║
 ║ ├── Java ████████████████████████████ 100%                                   ║
@@ -672,7 +669,7 @@ Current status: {
 ╚══════════════════════════════════════════════════════════════════════════════╝
         `
     },
-    
+
     projects: {
         desc: "Portfolio of completed projects",
         action: () => `
@@ -702,7 +699,7 @@ Current status: {
 └─────────────────────────────────────────────┘
         `
     },
-    
+
     experience: {
         desc: "Professional background",
         action: () => `
@@ -742,27 +739,22 @@ PROFESSIONAL EXPERIENCE:
 }
         `
     },
-    
+
     contact: {
         desc: "Contact information",
         action: () => `
 CONTACT:
 
 ┌────────────────────────────────────────────────┐
-│  LinkedIn: linkedin.com/in/jrdh            │
-│  Personal GitHub: github.com/rudahee       │
-│  Location: In a town near Seville          │
-│  Availability: 30 days                     │
+│  Personal GitHub: github.com/c03pt15       │
+│  Location: Ottawa, Ontario, Canada         │
+│  Availability: N/A                         │
 └────────────────────────────────────────────────┘
 
-Communication preferences:
-    - LinkedIn for professional networking  
-    - GitHub for code review
-
-Response time: 24-48 hours, unless I'm away, 
+Response time: 24-48 hours
         `
     },
-    
+
     clear: {
         desc: "Clear the terminal",
         action: () => {
@@ -775,46 +767,46 @@ Response time: 24-48 hours, unless I'm away,
         desc: "Running processes - Current development stack",
         action: () => `
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
-    1 rudahee   20   0 1245678  156432  89456 S  15.2  9.8   2:34.67 spring-boot-app
-    42 rudahee   20   0 2134567  245678 123456 S  22.5 15.4   4:23.45 java -Xmx2g -jar nuxeo
-    123 rudahee   20   0  156789   45632  23456 S   8.5  2.9   1:12.34 postgres
-    234 rudahee   20   0  234567   65432  34567 S   5.8  4.1   0:45.67 elasticsearch
-    345 rudahee   20   0   98765   23456  12345 S   3.2  1.5   0:28.91 kafka-server
-    456 rudahee   20   0   87654   21098  10549 S   2.1  1.3   0:15.43 mongodb
-    567 rudahee   20   0   76543   18765   9432 S   1.8  1.2   0:12.34 redis-server
-    678 rudahee   20   0  145632   34567  17234 S   4.5  2.2   0:56.78 docker-compose
-    789 rudahee   20   0   65432   15678   7890 S   1.2  1.0   0:08.45 maven
-    890 rudahee   20   0   54321   12345   6789 S   0.8  0.8   0:05.67 gradle-daemon
-    901 rudahee   20   0   43210   10987   5432 S   2.3  0.7   0:18.90 intellij-idea
-    1012 rudahee   20   0   32109    8765   4321 S   0.5  0.5   0:03.21 git
-    1123 rudahee   20   0   21098    6543   3210 S   0.3  0.4   0:02.10 postman
-    1312 rudahee   20   0   15432    4321   2109 S   0.2  0.3   0:01.45 vim
-    1345 rudahee   20   0   12345    3210   1654 S   0.1  0.2   0:00.87 bash
+    1 coeptis   20   0 1245678  156432  89456 S  15.2  9.8   2:34.67 spring-boot-app
+    42 coeptis   20   0 2134567  245678 123456 S  22.5 15.4   4:23.45 java -Xmx2g -jar nuxeo
+    123 coeptis   20   0  156789   45632  23456 S   8.5  2.9   1:12.34 postgres
+    234 coeptis   20   0  234567   65432  34567 S   5.8  4.1   0:45.67 elasticsearch
+    345 coeptis   20   0   98765   23456  12345 S   3.2  1.5   0:28.91 kafka-server
+    456 coeptis   20   0   87654   21098  10549 S   2.1  1.3   0:15.43 mongodb
+    567 coeptis   20   0   76543   18765   9432 S   1.8  1.2   0:12.34 redis-server
+    678 coeptis   20   0  145632   34567  17234 S   4.5  2.2   0:56.78 docker-compose
+    789 coeptis   20   0   65432   15678   7890 S   1.2  1.0   0:08.45 maven
+    890 coeptis   20   0   54321   12345   6789 S   0.8  0.8   0:05.67 gradle-daemon
+    901 coeptis   20   0   43210   10987   5432 S   2.3  0.7   0:18.90 intellij-idea
+    1012 coeptis   20   0   32109    8765   4321 S   0.5  0.5   0:03.21 git
+    1123 coeptis   20   0   21098    6543   3210 S   0.3  0.4   0:02.10 postman
+    1312 coeptis   20   0   15432    4321   2109 S   0.2  0.3   0:01.45 vim
+    1345 coeptis   20   0   12345    3210   1654 S   0.1  0.2   0:00.87 bash
 Tasks: 189 total,   2 running, 187 sleeping,   0 stopped,   0 zombie
 %Cpu(s): 18.4 us,  3.2 sy,  0.0 ni, 77.8 id,  0.5 wa,  0.1 hi,  0.0 si,  0.0 st
 MiB Mem : 32768.0 total,  12546.0 free,  15234.0 used,   4988.0 buff/cache
 MiB Swap:  8192.0 total,   8192.0 free,      0.0 used.  17534.0 avail Mem
         `
     },
-    
+
     ls: {
         desc: "Project structure and professional files",
         action: () => `
 total 156
-drwxr-xr-x  8 rudahee rudahee  4096 Jul 28 14:30 .
-drwxr-xr-x  3 rudahee rudahee  4096 Jul 28 10:00 ..
--rw-r--r--  1 rudahee rudahee   220 Jul 28 10:15 .zshrc
+drwxr-xr-x  8 coeptis coeptis  4096 Jul 28 14:30 .
+drwxr-xr-x  3 coeptis coeptis  4096 Jul 28 10:00 ..
+-rw-r--r--  1 coeptis coeptis   220 Jul 28 10:15 .zshrc
 -rw-r--r--  1 root    root      807 Jul 28 10:15 .profile
--rw-r--r--  1 rudahee rudahee  2048 Jul 28 12:30 skills.json
--rw-r--r--  1 rudahee rudahee  2584 Jul 28 14:25 CV-JoseRubenDazaHernandez.pdf
--rw-r--r--  2 rudahee rudahee  4096 Jul 28 12:45 certificates.json
+-rw-r--r--  1 coeptis coeptis  2048 Jul 28 12:30 skills.json
+-rw-r--r--  1 coeptis coeptis  2584 Jul 28 14:25 CV-JoseRubenDazaHernandez.pdf
+-rw-r--r--  2 coeptis coeptis  4096 Jul 28 12:45 certificates.json
         `
     },
 
     "cat .zshrc": {
-    desc: "Display ZSH configuration file",
-    action: () => `
-# RuDaHee's ZSH Configuration
+        desc: "Display ZSH configuration file",
+        action: () => `
+# coeptis's ZSH Configuration
 # Java Backend Developer Environment
 
 # Java Development Environment
@@ -859,10 +851,10 @@ alias dcdown='docker-compose down'
 function springinit() {
     curl https://start.spring.io/starter.zip \\
         -d dependencies=$1 \\
-        -d groupId=com.rudahee \\
+        -d groupId=com.coeptis \\
         -d artifactId=$2 \\
         -d name=$2 \\
-        -d packageName=com.rudahee.$2 \\
+        -d packageName=com.coeptis.$2 \\
         -o $2.zip
     unzip $2.zip
     rm $2.zip
@@ -877,9 +869,9 @@ PROMPT='%F{green}[%T]%f %F{blue}%n@%m%f:%F{yellow}%~%f$ '
     `
     },
 
-"cat .profile": {
-    desc: "Display system profile configuration",
-    action: () => `
+    "cat .profile": {
+        desc: "Display system profile configuration",
+        action: () => `
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login exists.
 
@@ -925,20 +917,20 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # Development environment indicator
-export DEV_ENV=rudahee-workstation
+export DEV_ENV=coeptis-workstation
     `
     },
 
-"cat CV-JoseRubenDazaHernandez.pdf": {
-    desc: "Display PDF content (text extraction)",
-    action: () => `
+    "cat CV-JoseRubenDazaHernandez.pdf": {
+        desc: "Display PDF content (text extraction)",
+        action: () => `
 ERROR: Cannot display binary file CV-JoseRubenDazaHernandez.pdf
 Use 'wget CV-JoseRubenDazaHernandez.pdf -' to download pdf.
 
 File info:
 - Size: 2584 bytes
 - Type: PDF document
-- Owner: rudahee
+- Owner: coeptis
 - Created: Jul 28 14:25
 - Contains: Professional CV with 4+ years Java Backend experience
 - Highlights: Spring Boot, Microservices, Kafka, ElasticSearch
@@ -947,9 +939,9 @@ File info:
     `
     },
 
-"cat certificates.json": {
-    desc: "Display professional certificates and courses",
-    action: () => `
+    "cat certificates.json": {
+        desc: "Display professional certificates and courses",
+        action: () => `
 {
     "professional_certificates": {
         "openwebinars": {
@@ -1040,13 +1032,13 @@ File info:
     `
     },
 
-download: {
-    desc: "Download CV in PDF format",
-    action: () => {
-        // Simulate CV download with actual link
-        window.open('www.google.es', '_blank');
-        
-        return `
+    download: {
+        desc: "Download CV in PDF format",
+        action: () => {
+            // Simulate CV download with actual link
+            window.open('www.google.es', '_blank');
+
+            return `
 📄 Generating download link...
 
 🔗 CV Download Link:
@@ -1062,9 +1054,9 @@ Tip: Right-click the link above and select 'Save link as...' for direct download
         }
     },
 
-"wget CV-JoseRubenDazaHernandez.pdf": {
-    desc: "Download CV using wget command",
-    action: () => `
+    "wget CV-JoseRubenDazaHernandez.pdf": {
+        desc: "Download CV using wget command",
+        action: () => `
 📄 Generating download link...
 
 🔗 CV Download Link:
@@ -1084,11 +1076,11 @@ Tip: Right-click the link above and select 'Save link as...' for direct download
         action: () => {
             const terminal = document.getElementById('terminal-content');
             const input = document.getElementById('command-input');
-            
+
             // Detect current theme and set colors accordingly
             let primaryColor = '#00ff00'; // default green
             let accentColor = '#00ffff'; // default cyan
-            
+
             if (document.body.classList.contains('interface-orange')) {
                 primaryColor = '#ff8800';
                 accentColor = '#ffaa00';
@@ -1096,11 +1088,11 @@ Tip: Right-click the link above and select 'Save link as...' for direct download
                 primaryColor = '#ffff00';
                 accentColor = '#ffff88';
             }
-            
+
             // Disable input
             input.disabled = true;
             input.style.opacity = '0.3';
-            
+
             // Show logout sequence
             const logoutMessages = [
                 { text: '[ OK ] Saving session data...', delay: 300 },
@@ -1109,7 +1101,7 @@ Tip: Right-click the link above and select 'Save link as...' for direct download
                 { text: '[ OK ] Logging out user...', delay: 300 },
                 { text: 'Goodbye!', delay: 400, color: accentColor }
             ];
-            
+
             let totalDelay = 0;
             logoutMessages.forEach((message, index) => {
                 setTimeout(() => {
@@ -1119,7 +1111,7 @@ Tip: Right-click the link above and select 'Save link as...' for direct download
                     logoutLine.innerHTML = `<span style="color: ${color};">${message.text}</span>`;
                     terminal.appendChild(logoutLine);
                     autoScrollDown();
-                    
+
                     // Redirect after last message
                     if (index === logoutMessages.length - 1) {
                         setTimeout(() => {
@@ -1129,7 +1121,7 @@ Tip: Right-click the link above and select 'Save link as...' for direct download
                 }, totalDelay);
                 totalDelay += message.delay;
             });
-            
+
             return '';
         }
     },
@@ -1139,9 +1131,9 @@ Tip: Right-click the link above and select 'Save link as...' for direct download
         action: (theme) => {
             // Remove all interface classes
             document.body.classList.remove('interface-green', 'interface-orange', 'interface-yellow', 'interface-bw');
-            
+
             if (!theme) {
-                return `Current interface: ${document.body.classList.contains('interface-orange') ? 'orange' : 
+                return `Current interface: ${document.body.classList.contains('interface-orange') ? 'orange' :
                     document.body.classList.contains('interface-yellow') ? 'yellow' : 'green'}
 
 Available interfaces:
@@ -1152,11 +1144,11 @@ Available interfaces:
 Usage: interface [theme]
 Example: interface orange`;
             }
-            
+
             const themeLower = theme.toLowerCase().trim();
             let themeClass = '';
             let themeName = '';
-            
+
             if (themeLower === 'orange') {
                 themeClass = 'interface-orange';
                 themeName = 'orange';
@@ -1170,12 +1162,12 @@ Example: interface orange`;
                 return `Error: Unknown interface theme "${theme}"
 Available themes: green, orange, yellow`;
             }
-            
+
             // Apply the theme
             if (themeClass) {
                 document.body.classList.add(themeClass);
             }
-            
+
             return `[ OK ] Interface changed to ${themeName} theme`;
         }
     },
@@ -1186,26 +1178,26 @@ Available themes: green, orange, yellow`;
             const terminal = document.getElementById('terminal-content');
             const input = document.getElementById('command-input');
             const inputLine = document.querySelector('.input-line');
-            
+
             // Reset interface to default (green)
             document.body.classList.remove('interface-green', 'interface-orange', 'interface-yellow');
-            
+
             // Clear command history
             commandHistory.length = 0;
             historyIndex = -1;
-            
+
             // Clear input
             input.value = '';
             currentSuggestion = '';
             updateSuggestionDisplay();
-            
+
             // Disable input during reset
             input.disabled = true;
             input.style.opacity = '0.3';
-            
+
             // Reset enter listeners flag
             enterListenersActive = false;
-            
+
             // Show reset messages with delays
             const resetMessages = [
                 { text: '[ OK ] Resetting terminal to default state...', delay: 400 },
@@ -1214,7 +1206,7 @@ Available themes: green, orange, yellow`;
                 { text: '[ OK ] Resetting command history...', delay: 250 },
                 { text: '[ OK ] Reinitializing system...', delay: 500, color: '#ffff00' }
             ];
-            
+
             let totalDelay = 0;
             resetMessages.forEach((message, index) => {
                 setTimeout(() => {
@@ -1224,7 +1216,7 @@ Available themes: green, orange, yellow`;
                     resetLine.innerHTML = `<span style="color: ${color};">${message.text}</span>`;
                     terminal.appendChild(resetLine);
                     autoScrollDown();
-                    
+
                     // After last message, clear terminal and start boot animation
                     if (index === resetMessages.length - 1) {
                         setTimeout(() => {
@@ -1236,7 +1228,7 @@ Available themes: green, orange, yellow`;
                 }, totalDelay);
                 totalDelay += message.delay;
             });
-            
+
             return '';
         }
     }
@@ -1247,14 +1239,14 @@ Available themes: green, orange, yellow`;
 function updateSuggestion() {
     const value = input.value.trim().toLowerCase();
     currentSuggestion = '';
-    
+
     if (value.length > 0) {
         const matches = Object.keys(commands).filter(cmd => cmd.startsWith(value));
         if (matches.length > 0 && matches[0] !== value) {
             currentSuggestion = matches[0].substring(value.length);
         }
     }
-    
+
     updateSuggestionDisplay();
 }
 
@@ -1263,7 +1255,7 @@ function updateSuggestionDisplay() {
     if (existingSuggestion) {
         existingSuggestion.remove();
     }
-    
+
     if (currentSuggestion) {
         const suggestionSpan = document.createElement('span');
         suggestionSpan.className = 'suggestion-text';
@@ -1273,11 +1265,11 @@ function updateSuggestionDisplay() {
         suggestionSpan.style.fontFamily = 'Source Code Pro, monospace';
         suggestionSpan.style.fontSize = window.getComputedStyle(input).fontSize;
         suggestionSpan.textContent = currentSuggestion;
-        
+
         const promptElement = input.parentElement.querySelector('.prompt');
         const promptWidth = promptElement ? promptElement.offsetWidth : 0;
         const inputMarginLeft = parseInt(window.getComputedStyle(input).marginLeft) || 10;
-        
+
         const tempSpan = document.createElement('span');
         tempSpan.style.font = window.getComputedStyle(input).font;
         tempSpan.style.fontFamily = 'Source Code Pro, monospace';
@@ -1287,13 +1279,13 @@ function updateSuggestionDisplay() {
         tempSpan.style.whiteSpace = 'pre';
         tempSpan.textContent = input.value;
         document.body.appendChild(tempSpan);
-        
+
         const textWidth = tempSpan.getBoundingClientRect().width;
         document.body.removeChild(tempSpan);
-        
+
         suggestionSpan.style.left = `${promptWidth + inputMarginLeft + textWidth + 10}px`;
         suggestionSpan.style.top = '0';
-        
+
         input.parentElement.appendChild(suggestionSpan);
     }
 }
@@ -1304,8 +1296,8 @@ input.addEventListener('keypress', (e) => {
 
         if (command && (commandHistory.length === 0 || commandHistory[commandHistory.length - 1] !== command)) {
             commandHistory.push(command);
-            historyIndex = -1; 
-        }        
+            historyIndex = -1;
+        }
 
         const commandLine = document.createElement('div');
         commandLine.innerHTML = `
@@ -1340,7 +1332,7 @@ input.addEventListener('keypress', (e) => {
             const fileName = command.substring(4).trim();
             const output = document.createElement('div');
             output.className = 'terminal-line';
-            
+
             if (fileName === 'skills.json') {
                 const jsonOutput = document.createElement('div');
                 jsonOutput.className = 'json-display';
