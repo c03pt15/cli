@@ -264,29 +264,7 @@ async function clearAndShowNormalContent() {
         await waitAsync(600);
         // Type and then show cat skills.json
         await typeCommandLineAsync('cat skills.json');
-        const skillsJsonLines = [
-            '{',
-            '&nbsp;&nbsp;&nbsp;&nbsp;"languages": ["Javascript", "Typescript", "SQL", "PLSQL", "Bash"],',
-            '&nbsp;&nbsp;&nbsp;&nbsp;"database": ["PostgreSQL", "MySQL", "MariaDB", "MongoDB", "SQLite"],',
-            '&nbsp;&nbsp;&nbsp;&nbsp;"tools": ["Docker", "Git", "Gitflow"],',
-            '}'
-        ];
-        let jsonContainer = null;
-        for (let i = 0; i < skillsJsonLines.length; i++) {
-            await new Promise(resolve => {
-                setTimeout(() => {
-                    if (i === 0) {
-                        jsonContainer = document.createElement('div');
-                        jsonContainer.className = 'json-display';
-                        jsonContainer.innerHTML = '';
-                        terminal.appendChild(jsonContainer);
-                    }
-                    jsonContainer.innerHTML += `${skillsJsonLines[i]}${i < skillsJsonLines.length - 1 ? '<br>' : ''}`;
-                    autoScrollDown();
-                    resolve();
-                }, 250);
-            });
-        }
+        await addOutputLineAsync('Access Denied: This command is temporarily disabled while the site is under construction.', 300);
         // Show welcome message
         await new Promise(resolve => {
             setTimeout(() => {
@@ -487,15 +465,21 @@ Status: { "available": <span id="available-status">false</span>, "caffeine_level
         desc: "Personal and professional information",
         action: () => `
 ================================
-    BACKEND DEVELOPER PROFILE    
+      SENIOR WEB DEVELOPER     
 ================================
 
-I'm a Java backend developer with 5+ years of experience in companies like 
-Capgemini, Eviden, Atmira and Atos. I specialize in middleware systems, microservices 
-and legacy technology migration.
+For the past 20 years, I've been leading, coordinating, and implementing 
+web projects as an accomplished web consultant. With superior communication 
+skills in English and French, I have developed the facility to clearly 
+communicate with senior management, clients, and stakeholders alike. My 
+various expertise gained through both the government and private sectors, 
+makes me a well-rounded individual in this field.
 
-Experience: 5+ years in enterprise development
-Focus: System integration, REST APIs and scalable architectures
+Furthermore, one of my best abilities is to offer intelligent and creative 
+solutions to complex issues, both from a technical and management 
+perspectives. I'm an extremely versatile individual who adapts quickly and 
+efficiently to any circumstances. I am self-motivated, creative, and able 
+to work with minimal supervision.
 
 Current status: {
     "seeking_opportunities": false,
@@ -505,199 +489,18 @@ Current status: {
     },
 
     skills: {
-        desc: "Resume of my technology stack",
-        action: () => `
-╔══════════════════════════════════════╗
-║            TECH STACK                ║
-╠══════════════════════════════════════╣
-║ Backend Languages:                   ║
-║ ├── Java █████████████████████ 100%  ║
-║ ├── C# ████████████ 70%              ║
-║ ├── JavaScript ███████████ 75%       ║
-║ ├── Python █████████████ 85%         ║
-║ └── SQL/PLSQL ████████████ 80%       ║
-║                                      ║
-║ Frameworks & Libraries:              ║
-║ ├── Spring Boot ██████████████ 90%   ║
-║ ├── Hibernate/JPA █████████████ 85%  ║
-║ ├── Maven/Gradle ████████████ 80%    ║
-║ └── Kafka ███████████ 75%            ║
-║                                      ║
-║ Databases:                           ║
-║ ├── PostgreSQL ████████████████ 80%  ║
-║ ├── MySQL/MariaDB ██████████████ 90% ║
-║ ├── MongoDB ███████████ 75%          ║
-║ └── Oracle ████████████ 80%          ║
-╚══════════════════════════════════════╝
-        `
+        desc: "Technologies I work with",
+        action: () => `Access Denied: This command is temporarily disabled while the site is under construction.`
     },
 
     "skills --all": {
         desc: "My complete technology stack",
-        action: () => `
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                           TECH STACK - Ghislain Girard                       ║
-║                              Senior Web Developer                            ║
-╠══════════════════════════════════════════════════════════════════════════════╣
-║ Backend Languages:                                                           ║
-║ ├── Java ████████████████████████████ 100%                                   ║
-║ ├── SQL/PLSQL ████████████████████████ 95%                                   ║
-║ ├── C# ████████████████ 75%                                                  ║
-║ ├── JavaScript ████████████████ 78%                                          ║
-║ ├── TypeScript ████████████ 65%                                              ║
-║ ├── Python ████████████ 60%                                                  ║
-║ └── C ██████████ 50%                                                         ║
-║                                                                              ║
-║ Spring Ecosystem:                                                            ║
-║ ├── Spring Boot ████████████████████████████ 98%                             ║
-║ ├── Spring Data JPA ████████████████████████ 95%                             ║
-║ ├── Spring Security ███████████████████████ 92%                              ║
-║ ├── Spring Web/MVC ████████████████████████ 95%                              ║
-║ ├── Spring Batch ██████████████████ 85%                                      ║
-║ ├── Spring Mail ███████████████████ 82%                                      ║
-║ ├── Spring Framework ████████████████████████ 95%                            ║
-║ └── Spring REST ████████████████████████ 95%                                 ║
-║                                                                              ║
-║ Persistence & ORM:                                                           ║
-║ ├── JPA/Hibernate ████████████████████████ 95%                               ║
-║ ├── JDBC ███████████████████████ 90%                                         ║
-║ ├── JDBC Template ██████████████████ 85%                                     ║
-║ └── MyBatis ████████████ 60%                                                 ║
-║                                                                              ║
-║ Databases:                                                                   ║
-║ ├── MySQL ████████████████████████ 95%                                       ║
-║ ├── PostgreSQL ███████████████████████ 90%                                   ║
-║ ├── Oracle DB ███████████████████████ 88%                                    ║
-║ ├── MongoDB ████████████████ 75%                                             ║
-║ ├── ElasticSearch ██████████████████ 80%                                     ║
-║ ├── H2 Database ████████████████ 75%                                         ║
-║ └── PostGIS ██████████████ 68%                                               ║
-║                                                                              ║
-║ Build Tools & Dependency Management:                                         ║
-║ ├── Maven ████████████████████████ 95%                                       ║
-║ ├── Gradle ███████████████████████ 90%                                       ║
-║ └── Ant ██████████ 50%                                                       ║
-║                                                                              ║
-║ Message Brokers & Communication:                                             ║
-║ ├── Apache Kafka ███████████████████████ 88%                                 ║
-║ ├── JMS ██████████████████ 80%                                               ║
-║ ├── REST APIs ████████████████████████ 95%                                   ║
-║ ├── SOAP ███████████████████ 82%                                             ║
-║ └── WebServices ███████████████████ 85%                                      ║
-║                                                                              ║
-║ Frontend Technologies:                                                       ║
-║ ├── HTML/CSS ███████████████████ 85%                                         ║
-║ ├── JavaScript ████████████████████ 82%                                      ║
-║ ├── TypeScript ██████████████ 70%                                            ║
-║ ├── Angular ████████████████ 75%                                             ║
-║ ├── Ionic ██████████████ 68%                                                 ║
-║ ├── Polymer ████████████ 65%                                                 ║
-║ └── Thymeleaf ███████████████ 72%                                            ║
-║                                                                              ║
-║ Enterprise & Application Servers:                                            ║
-║ ├── Apache Tomcat ███████████████████████ 90%                                ║
-║ ├── Weblogic ██████████████████ 80%                                          ║
-║ ├── JBoss/WildFly ███████████████ 72%                                        ║
-║ ├── Apache HTTP Server ████████████████ 75%                                  ║
-║ ├── Nginx ██████████████ 70%                                                 ║
-║ └── JSF ██████████████ 68%                                                   ║
-║                                                                              ║
-║ Enterprise Integration & Middleware:                                         ║
-║ ├── TIBCO BusinessWorks ███████████████████ 82%                              ║
-║ ├── TIBCO EMS ████████████████ 75%                                           ║
-║ ├── Nuxeo (Document Management) ████████████████ 78%                         ║
-║ └── Middleware Systems ███████████████████ 85%                               ║
-║                                                                              ║
-║ DevOps & Infrastructure:                                                     ║
-║ ├── Docker ████████████████████ 82%                                          ║
-║ ├── Jenkins ███████████████████ 85%                                          ║
-║ ├── Git/GitHub ████████████████████████ 95%                                  ║
-║ ├── Linux/Ubuntu ███████████████████████ 88%                                 ║ 
-║ ├── Apache ████████████████ 75%                                              ║
-║ └── FTP/SMTP Servers ██████████████ 70%                                      ║
-║                                                                              ║
-║ Testing & Quality:                                                           ║
-║ ├── JUnit 5 ███████████████████████ 88%                                      ║
-║ ├── Mockito ██████████████████ 80%                                           ║
-║ ├── Spring Test ███████████████████ 82%                                      ║
-║ ├── Integration Testing ████████████████ 78%                                 ║
-║ └── Unit Testing ███████████████████████ 90%                                 ║
-║                                                                              ║
-║ Game Development & Mod Development:                                          ║
-║ ├── Minecraft Forge API ████████████████████████ 95%                         ║
-║ ├── Minecraft Fabric ██████████████████ 80%                                  ║
-║ ├── Discord4J ████████████████████ 82%                                       ║
-║ ├── Twitch4J ███████████████████ 80%                                         ║
-║ ├── Minecraft Modding ████████████████████████ 92%                           ║
-║ └── Mixins ████████████████ 75%                                              ║
-║                                                                              ║
-║ Utility Libraries & Tools:                                                   ║
-║ ├── Lombok ████████████████████████ 95%                                      ║
-║ ├── MapStruct ███████████████████ 85%                                        ║
-║ ├── Jackson (JSON) ███████████████████ 82%                                   ║
-║ ├── Apache Commons ████████████████ 75%                                      ║
-║ └── Guava ██████████████ 68%                                                 ║
-║                                                                              ║
-║ Geographic & Spatial Technologies:                                           ║
-║ ├── PostGIS ██████████████ 70%                                               ║
-║ ├── GeoServer ██████████████ 68%                                             ║
-║ └── Spatial Databases ████████████ 60%                                       ║
-║                                                                              ║
-║ Development Tools & IDEs:                                                    ║
-║ ├── IntelliJ IDEA ████████████████████████ 95%                               ║
-║ ├── Eclipse ███████████████ 72%                                              ║
-║ ├── Visual Studio Code ████████████████ 75%                                  ║
-║ ├── Postman ███████████████████ 85%                                          ║
-║ ├── Swagger/OpenAPI ████████████████ 78%                                     ║
-║ └── TIBCO Designer ████████████████ 72%                                      ║
-║                                                                              ║
-║ Enterprise Patterns & Architecture:                                          ║
-║ ├── Repository Pattern ████████████████████████ 95%                          ║
-║ ├── Service Layer Pattern ████████████████████████ 98%                       ║
-║ ├── DTO Pattern ███████████████████████ 90%                                  ║
-║ ├── MVC Pattern ████████████████████████ 92%                                 ║
-║ ├── Generic Programming ████████████████████████ 95%                         ║
-║ ├── Dependency Injection ████████████████████████ 95%                        ║
-║ ├── Microservices Architecture ███████████████████ 85%                       ║
-║ └── Middleware Integration ███████████████████████ 88%                       ║
-║                                                                              ║
-║ Security & Authentication:                                                   ║
-║ ├── Spring Security ███████████████████████ 88%                              ║
-║ ├── JWT ████████████████ 75%                                                 ║
-║ ├── OAuth2 ██████████████ 68%                                                ║
-║ └── Secure Development ███████████████████ 82%                               ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-        `
+        action: () => `Access Denied: This command is temporarily disabled while the site is under construction.`
     },
 
     projects: {
-        desc: "Portfolio of completed projects",
-        action: () => `
-
-┌─────────────────────────────────────────────┐
-│ 1. Tibco to Spring Boot Migration           │
-│    Stack: Java + Spring Boot + Oracle       │
-│    Features: Middleware modernization,      │
-│             System integration, POC         │
-│    Impact: Legacy system modernization      │
-└─────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────┐
-│ 2. Nuxeo Document Management System         │
-│    Stack: Java + Spring + ElasticSearch     │
-│    Features: Document workflow, REST APIs,  │
-│             Frontend integration            │
-│    Company: Capgemini                       │
-└─────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────┐
-│ 3. SteelCode Team - Open Source             │
-│    Stack: Java + ForgeAPI + Discord4J       │
-│    Features: Gaming mods, Community tools   │
-│    Stats: 250K+ impressions, 70K+ downloads │
-│    GitHub: github.com/steelcodeteam         │
-└─────────────────────────────────────────────┘
-        `
+        desc: "Highlighted projects",
+        action: () => `Access Denied: This command is temporarily disabled while the site is under construction.`
     },
 
     experience: {
@@ -712,7 +515,7 @@ PROFESSIONAL EXPERIENCE:
         "period": "Jun. 2025 - present",
         "responsibilities": [
             "Development in Backend ecosystem in large project",
-            "Spring Boot + Maven + Gradle",
+            "Spring Boot + Maven + Gradle"
         ]
     },
     "previous": [
@@ -721,23 +524,22 @@ PROFESSIONAL EXPERIENCE:
             "company": "Capgemini",
             "period": "Dec. 2024 - Jun. 2025",
             "highlights": "FullStack development, system communication, Nuxeo + Spring ecosystem"
-
         },
         {
-            "position": "Software Developer", 
+            "position": "Software Developer",
             "company": "Eviden",
             "period": "Aug. 2023 - Nov. 2024",
             "highlights": "Backend development, system communication, Spring ecosystem"
         },
         {
             "position": "Software Developer",
-            "company": "Atos", 
+            "company": "Atos",
             "period": "Jan. 2022 - Aug. 2023",
             "highlights": "Middleware systems, Tibco to Spring Boot migration leadership"
         }
     ]
 }
-        `
+    `
     },
 
     contact: {
@@ -746,13 +548,13 @@ PROFESSIONAL EXPERIENCE:
 CONTACT:
 
 ┌────────────────────────────────────────────────┐
-│  Personal GitHub: github.com/c03pt15       │
-│  Location: Ottawa, Ontario, Canada         │
-│  Availability: N/A                         │
+│  Personal GitHub: github.com/c03pt15           │
+│  Location: Ottawa, Ontario, Canada             │
+│  Availability: N/A                             │
 └────────────────────────────────────────────────┘
 
 Response time: 24-48 hours
-        `
+    `
     },
 
     clear: {
@@ -766,27 +568,28 @@ Response time: 24-48 hours
     htop: {
         desc: "Running processes - Current development stack",
         action: () => `
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
-    1 coeptis   20   0 1245678  156432  89456 S  15.2  9.8   2:34.67 spring-boot-app
-    42 coeptis   20   0 2134567  245678 123456 S  22.5 15.4   4:23.45 java -Xmx2g -jar nuxeo
-    123 coeptis   20   0  156789   45632  23456 S   8.5  2.9   1:12.34 postgres
-    234 coeptis   20   0  234567   65432  34567 S   5.8  4.1   0:45.67 elasticsearch
-    345 coeptis   20   0   98765   23456  12345 S   3.2  1.5   0:28.91 kafka-server
-    456 coeptis   20   0   87654   21098  10549 S   2.1  1.3   0:15.43 mongodb
-    567 coeptis   20   0   76543   18765   9432 S   1.8  1.2   0:12.34 redis-server
-    678 coeptis   20   0  145632   34567  17234 S   4.5  2.2   0:56.78 docker-compose
-    789 coeptis   20   0   65432   15678   7890 S   1.2  1.0   0:08.45 maven
-    890 coeptis   20   0   54321   12345   6789 S   0.8  0.8   0:05.67 gradle-daemon
-    901 coeptis   20   0   43210   10987   5432 S   2.3  0.7   0:18.90 intellij-idea
-    1012 coeptis   20   0   32109    8765   4321 S   0.5  0.5   0:03.21 git
-    1123 coeptis   20   0   21098    6543   3210 S   0.3  0.4   0:02.10 postman
-    1312 coeptis   20   0   15432    4321   2109 S   0.2  0.3   0:01.45 vim
-    1345 coeptis   20   0   12345    3210   1654 S   0.1  0.2   0:00.87 bash
-Tasks: 189 total,   2 running, 187 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 18.4 us,  3.2 sy,  0.0 ni, 77.8 id,  0.5 wa,  0.1 hi,  0.0 si,  0.0 st
-MiB Mem : 32768.0 total,  12546.0 free,  15234.0 used,   4988.0 buff/cache
-MiB Swap:  8192.0 total,   8192.0 free,      0.0 used.  17534.0 avail Mem
-        `
+    PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
+      1 coeptis   20   0 1245678  156432  89456 S 15.2  9.8   2:34.67 spring-boot-app
+     42 coeptis   20   0 2134567  245678 123456 S 22.5 15.4   4:23.45 java -Xmx2g -jar nuxeo
+    123 coeptis   20   0  156789   45632  23456 S  8.5  2.9   1:12.34 postgres
+    234 coeptis   20   0  234567   65432  34567 S  5.8  4.1   0:45.67 elasticsearch
+    345 coeptis   20   0   98765   23456  12345 S  3.2  1.5   0:28.91 kafka-server
+    456 coeptis   20   0   87654   21098  10549 S  2.1  1.3   0:15.43 mongodb
+    567 coeptis   20   0   76543   18765   9432 S  1.8  1.2   0:12.34 redis-server
+    678 coeptis   20   0  145632   34567  17234 S  4.5  2.2   0:56.78 docker-compose
+    789 coeptis   20   0   65432   15678   7890 S  1.2  1.0   0:08.45 maven
+    890 coeptis   20   0   54321   12345   6789 S  0.8  0.8   0:05.67 gradle-daemon
+    901 coeptis   20   0   43210   10987   5432 S  2.3  0.7   0:18.90 intellij-idea
+   1012 coeptis   20   0   32109    8765   4321 S  0.5  0.5   0:03.21 git
+   1123 coeptis   20   0   21098    6543   3210 S  0.3  0.4   0:02.10 postman
+   1312 coeptis   20   0   15432    4321   2109 S  0.2  0.3   0:01.45 vim
+   1345 coeptis   20   0   12345    3210   1654 S  0.1  0.2   0:00.87 bash
+
+Tasks: 189 total, 2 running, 187 sleeping, 0 stopped, 0 zombie
+%Cpu(s): 18.4 us, 3.2 sy, 0.0 ni, 77.8 id, 0.5 wa, 0.1 hi, 0.0 si, 0.0 st
+MiB Mem: 32768.0 total, 12546.0 free, 15234.0 used, 4988.0 buff/cache
+MiB Swap: 8192.0 total, 8192.0 free, 0.0 used. 17534.0 avail Mem
+    `
     },
 
     ls: {
@@ -798,9 +601,9 @@ drwxr-xr-x  3 coeptis coeptis  4096 Jul 28 10:00 ..
 -rw-r--r--  1 coeptis coeptis   220 Jul 28 10:15 .zshrc
 -rw-r--r--  1 root    root      807 Jul 28 10:15 .profile
 -rw-r--r--  1 coeptis coeptis  2048 Jul 28 12:30 skills.json
--rw-r--r--  1 coeptis coeptis  2584 Jul 28 14:25 CV-JoseRubenDazaHernandez.pdf
+-rw-r--r--  1 coeptis coeptis  2584 Jul 28 14:25 CV-GhislainGirard.pdf
 -rw-r--r--  2 coeptis coeptis  4096 Jul 28 12:45 certificates.json
-        `
+`
     },
 
     "cat .zshrc": {
@@ -849,19 +652,16 @@ alias dcdown='docker-compose down'
 
 # Custom functions for Spring Boot projects
 function springinit() {
-    curl https://start.spring.io/starter.zip \\
-        -d dependencies=$1 \\
-        -d groupId=com.coeptis \\
-        -d artifactId=$2 \\
-        -d name=$2 \\
-        -d packageName=com.coeptis.$2 \\
+    curl https://start.spring.io/starter.zip \
+        -d dependencies=$1 \
+        -d groupId=com.coeptis \
+        -d artifactId=$2 \
+        -d name=$2 \
+        -d packageName=com.coeptis.$2 \
         -o $2.zip
     unzip $2.zip
     rm $2.zip
 }
-
-# SteelCode Team projects path
-export STEELCODE_PATH=~/projects/steelcode-team
 
 # Prompt customization
 autoload -U promptinit; promptinit
@@ -921,21 +721,15 @@ export DEV_ENV=coeptis-workstation
     `
     },
 
-    "cat CV-JoseRubenDazaHernandez.pdf": {
+    "cat CV-GhislainGirard.pdf": {
         desc: "Display PDF content (text extraction)",
         action: () => `
-ERROR: Cannot display binary file CV-JoseRubenDazaHernandez.pdf
-Use 'wget CV-JoseRubenDazaHernandez.pdf -' to download pdf.
+ERROR: Cannot display binary file CV-GhislainGirard.pdf
+Use 'wget CV-GhislainGirard.pdf -' to download pdf.
 
 File info:
 - Size: 2584 bytes
 - Type: PDF document
-- Owner: coeptis
-- Created: Jul 28 14:25
-- Contains: Professional CV with 4+ years Java Backend experience
-- Highlights: Spring Boot, Microservices, Kafka, ElasticSearch
-- Companies: Capgemini, Eviden, Atos, Atmira
-- Projects: SteelCode Team, Spring-archetypes
     `
     },
 
@@ -1032,6 +826,11 @@ File info:
     `
     },
 
+    "resume.pdf": {
+        desc: "Download resume",
+        action: () => `Access Denied: This command is temporarily disabled while the site is under construction.`
+    },
+
     download: {
         desc: "Download CV in PDF format",
         action: () => {
@@ -1044,17 +843,17 @@ File info:
 🔗 CV Download Link:
 https://drive.google.com/file/d/1X9mP3kL7qR5wE2nA8sC6vF4hJ9bN0tY2/view?usp=sharing
 
-File: CV-JoseRubenDazaHernandez.pdf
+File: CV - GhislainGirard.pdf
 Size: 2.5 MB
 Type: PDF Document
-Last updated: July 2025
+Last updated: December 2025
 
-Tip: Right-click the link above and select 'Save link as...' for direct download
-        `;
+Tip: Right - click the link above and select 'Save link as...' for direct download
+    `;
         }
     },
 
-    "wget CV-JoseRubenDazaHernandez.pdf": {
+    "wget CV-GhislainGirard.pdf": {
         desc: "Download CV using wget command",
         action: () => `
 📄 Generating download link...
@@ -1062,12 +861,12 @@ Tip: Right-click the link above and select 'Save link as...' for direct download
 🔗 CV Download Link:
 https://drive.google.com/file/d/1X9mP3kL7qR5wE2nA8sC6vF4hJ9bN0tY2/view?usp=sharing
 
-File: CV-JoseRubenDazaHernandez.pdf
+File: CV - GhislainGirard.pdf
 Size: 2.5 MB
 Type: PDF Document
-Last updated: July 2025
+Last updated: December 2025
 
-Tip: Right-click the link above and select 'Save link as...' for direct download
+Tip: Right - click the link above and select 'Save link as...' for direct download
     `
     },
 
@@ -1108,7 +907,7 @@ Tip: Right-click the link above and select 'Save link as...' for direct download
                     const logoutLine = document.createElement('div');
                     logoutLine.className = 'terminal-line';
                     const color = message.color || primaryColor;
-                    logoutLine.innerHTML = `<span style="color: ${color};">${message.text}</span>`;
+                    logoutLine.innerHTML = `< span style = "color: ${color};" > ${message.text}</span > `;
                     terminal.appendChild(logoutLine);
                     autoScrollDown();
 
@@ -1134,14 +933,15 @@ Tip: Right-click the link above and select 'Save link as...' for direct download
 
             if (!theme) {
                 return `Current interface: ${document.body.classList.contains('interface-orange') ? 'orange' :
-                    document.body.classList.contains('interface-yellow') ? 'yellow' : 'green'}
+                    document.body.classList.contains('interface-yellow') ? 'yellow' : 'green'
+                    }
 
 Available interfaces:
-  green   - Default green terminal (matrix style)
-  orange  - Orange terminal theme
-  yellow  - Yellow terminal theme
+green - Default green terminal(matrix style)
+orange - Orange terminal theme
+yellow - Yellow terminal theme
 
-Usage: interface [theme]
+Usage: interface[theme]
 Example: interface orange`;
             }
 
@@ -1168,7 +968,7 @@ Available themes: green, orange, yellow`;
                 document.body.classList.add(themeClass);
             }
 
-            return `[ OK ] Interface changed to ${themeName} theme`;
+            return `[OK] Interface changed to ${themeName} theme`;
         }
     },
 
@@ -1213,7 +1013,7 @@ Available themes: green, orange, yellow`;
                     const resetLine = document.createElement('div');
                     resetLine.className = 'terminal-line';
                     const color = message.color || '#00ff00';
-                    resetLine.innerHTML = `<span style="color: ${color};">${message.text}</span>`;
+                    resetLine.innerHTML = `< span style = "color: ${color};" > ${message.text}</span > `;
                     terminal.appendChild(resetLine);
                     autoScrollDown();
 
@@ -1283,7 +1083,7 @@ function updateSuggestionDisplay() {
         const textWidth = tempSpan.getBoundingClientRect().width;
         document.body.removeChild(tempSpan);
 
-        suggestionSpan.style.left = `${promptWidth + inputMarginLeft + textWidth + 10}px`;
+        suggestionSpan.style.left = `${promptWidth + inputMarginLeft + textWidth + 10} px`;
         suggestionSpan.style.top = '0';
 
         input.parentElement.appendChild(suggestionSpan);
@@ -1301,13 +1101,19 @@ input.addEventListener('keypress', (e) => {
 
         const commandLine = document.createElement('div');
         commandLine.innerHTML = `
-            <span class="prompt">system@portfolio:~$</span>
-            <span class="command">${input.value}</span>
-        `;
+    <span class="prompt">system@portfolio:~$</span>
+    <span class="command">${input.value}</span>
+`;
 
-        terminal.appendChild(commandLine)
+        terminal.appendChild(commandLine);
 
-        if (commands[command]) {
+        if (command === 'cat' || command.startsWith('cat ')) {
+            const output = document.createElement('div');
+            output.className = 'terminal-line';
+            output.innerHTML = `<div class="output">Access Denied: This command is temporarily disabled while the site is under construction.</div>`;
+            terminal.appendChild(output);
+
+        } else if (commands[command]) {
             const output = document.createElement('div');
             output.className = 'terminal-line';
             output.innerHTML = `<div class="output">${commands[command].action()}</div>`;
@@ -1328,41 +1134,13 @@ input.addEventListener('keypress', (e) => {
 
         } else if (command === '') {
 
-        } else if (command.startsWith('cat ')) {
-            const fileName = command.substring(4).trim();
-            const output = document.createElement('div');
-            output.className = 'terminal-line';
-
-            if (fileName === 'skills.json') {
-                const jsonOutput = document.createElement('div');
-                jsonOutput.className = 'json-display';
-                jsonOutput.innerHTML = `
-{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;"languages": ["Java", "Python", "C#", "Javascript", "Typescript", "SQL", "PLSQL", "Bash"],<br>
-&nbsp;&nbsp;&nbsp;&nbsp;"frameworks": ["Spring Framework", "Angular", "Hibernate", "JPA/JDBC", "JSF/JBoss", "Thymeleaf", "Lombok"],<br>
-&nbsp;&nbsp;&nbsp;&nbsp;"database": ["PostgreSQL", "MySQL", "MariaDB", "MongoDB", "Redis", "Oracle", "ElasticSeach", "SQLite"],<br>
-&nbsp;&nbsp;&nbsp;&nbsp;"tools": ["Docker", "Docker-compose", "Jenkins", "Git", "Gitflow", "Maven", "Gradle"],<br>
-&nbsp;&nbsp;&nbsp;&nbsp;"architecture": ["Microservice", "REST APIs", "Event-driven", "SOLID"]<br>
-}
-                `;
-                terminal.appendChild(output);
-                terminal.appendChild(jsonOutput);
-            } else if (commands[`cat ${fileName}`]) {
-                // Handle other cat commands like "cat .zshrc", "cat .profile", etc.
-                output.innerHTML = `<div class="output">${commands[`cat ${fileName}`].action()}</div>`;
-                terminal.appendChild(output);
-            } else {
-                output.innerHTML = `<div class="output">cat: ${fileName}: File not found
-Files available: .profile, .zshrc, skills.json, CV-JoseRubenDazaHernandez.pdf, certificates.json</div>`;
-                terminal.appendChild(output);
-            }
         } else {
             const output = document.createElement('div');
             output.className = 'terminal-line';
             output.innerHTML = `
-<div class="output">zsh: command not found: ${command}
+    <div class="output">zsh: command not found: ${command}
 Run 'help' to see available commands.
-            </div>`;
+    </div>`;
             terminal.appendChild(output);
 
         }
@@ -1371,9 +1149,9 @@ Run 'help' to see available commands.
         currentSuggestion = '';
         updateSuggestionDisplay();
 
-        autoScrollDown()
+        autoScrollDown();
     }
-})
+});
 
 
 input.focus();
