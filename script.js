@@ -465,21 +465,19 @@ Status: { "available": <span id="available-status">false</span>, "caffeine_level
         desc: "Personal and professional information",
         action: () => `
 ================================
-      SENIOR WEB DEVELOPER     
+  SENIOR WEB DEVELOPER/MANAGER     
 ================================
 
-For the past 20 years, I've been leading, coordinating, and implementing 
-web projects as an accomplished web consultant. With superior communication 
-skills in English and French, I have developed the facility to clearly 
-communicate with senior management, clients, and stakeholders alike. My 
-various expertise gained through both the government and private sectors, 
-makes me a well-rounded individual in this field.
+For the past 20 years, I have led, coordinated, and delivered web projects 
+as an accomplished web consultant. Fluent in both English and French, I 
+communicate clearly and effectively with senior management, clients, and 
+stakeholders. My experience across both the government and private sectors 
+has made me a well-rounded professional in this field.
 
-Furthermore, one of my best abilities is to offer intelligent and creative 
-solutions to complex issues, both from a technical and management 
-perspectives. I'm an extremely versatile individual who adapts quickly and 
-efficiently to any circumstances. I am self-motivated, creative, and able 
-to work with minimal supervision.
+I excel at developing intelligent, creative solutions to complex challenges, 
+from both technical and management perspectives. Highly versatile and 
+adaptable, I thrive in dynamic environments and work efficiently with 
+minimal supervision. I am self-motivated, creative, and results-driven.
 
 Current status: {
     "seeking_opportunities": false,
