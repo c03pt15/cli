@@ -1,0 +1,25 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "build": "javascript-obfuscator script.src.js --output script.js --compact true --self-defending true --string-array true --string-array-rotate true --string-array-shuffle true --string-array-index-shift true",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c03pt15/cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/c03pt15/cli/issues"
+  },
+  "homepage": "https://github.com/c03pt15/cli#readme",
+  "devDependencies": {
+    "javascript-obfuscator": "^5.1.0"
+  }
+}
