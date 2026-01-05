@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghislain Girard</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="crt">
     <div class="cursor"></div>
     <div class="container">
         <div class="terminal-header">
             <div class="ascii-art">
- ██████╗  ██╗  ██╗██╗███████╗██╗      █████╗ ██╗███╗   ██╗    ██████╗  ██╗██████╗  █████╗ ██████╗ ██████╗ 
-██╔════╝ ██║  ██║██║██╔════╝██║     ██╔══██╗██║████╗  ██║    ██╔════╝ ██║██╔══██╗██╔══██╗██╔══██╗██╔══██╗
-██║  ███╗███████║██║███████╗██║     ███████║██║██╔██╗ ██║    ██║  ███╗██║██████╔╝███████║██████╔╝██║  ██║
-██║   ██║██╔══██║██║╚════██║██║     ██╔══██║██║██║╚██╗██║    ██║   ██║██║██╔══██╗██╔══██║██╔══██╗██║  ██║
-╚██████╔╝██║  ██║██║███████║███████╗██║  ██║██║██║ ╚████║    ╚██████╔╝██║██║  ██║██║  ██║██║  ██║██████╔╝
-╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝
+                ██████╗ ██╗ ██╗██╗███████╗██╗ █████╗ ██╗███╗ ██╗ ██████╗ ██╗██████╗ █████╗ ██████╗ ██████╗
+                ██╔════╝ ██║ ██║██║██╔════╝██║ ██╔══██╗██║████╗ ██║ ██╔════╝ ██║██╔══██╗██╔══██╗██╔══██╗██╔══██╗
+                ██║ ███╗███████║██║███████╗██║ ███████║██║██╔██╗ ██║ ██║ ███╗██║██████╔╝███████║██████╔╝██║ ██║
+                ██║ ██║██╔══██║██║╚════██║██║ ██╔══██║██║██║╚██╗██║ ██║ ██║██║██╔══██╗██╔══██║██╔══██╗██║ ██║
+                ╚██████╔╝██║ ██║██║███████║███████╗██║ ██║██║██║ ╚████║ ╚██████╔╝██║██║ ██║██║ ██║██║ ██║██████╔╝
+                ╚═════╝ ╚═╝ ╚═╝╚═╝╚══════╝╚══════╝╚═╝ ╚═╝╚═╝╚═╝ ╚═══╝ ╚═════╝ ╚═╝╚═╝ ╚═╝╚═╝ ╚═╝╚═╝ ╚═╝╚═════╝
             </div>
             <div style="text-align: center; color: #00ffff;">
-                Terminal v1.0.0 | Senior Developer | System activated...
+                Terminal v1.0.0 | System activated...
             </div>
         </div>
         <div class="terminal-window">
@@ -27,7 +29,8 @@
             </div>
             <div class="input-line">
                 <span class="prompt">system@portfolio:~$</span>
-                <input type="text" id="command-input" placeholder="Write 'help' to display all available commands" autocomplete="off"/>
+                <input type="text" id="command-input" placeholder="Write 'help' to display all available commands"
+                    autocomplete="off" />
                 <span class="blink" id="custom-cursor">█</span>
             </div>
         </div>
@@ -36,4 +39,5 @@
     <!--script src="dynamic-counter.js"><script>-->
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -255,8 +255,8 @@ async function clearAndShowNormalContent() {
         await typeCommandLineAsync('whoami');
         const whoamiOutput = [
             'Name: Ghislain Girard',
-            'Role: Web Operations Manager',
-            'Status: { "available": <span id="available-status">false</span>, "caffeine_level": <span id="caffeine-level">8.3</span>, "bugs_fixed_today": <span id="bugs-fixed">' + sessionBugsFixed + '</span> }'
+            'Current Role: Web Operations Manager',
+            'Status: { "unavailable": <span id="available-status">false</span>, "caffeine_level": <span id="caffeine-level">8.3</span>, "bugs_fixed_today": <span id="bugs-fixed">' + sessionBugsFixed + '</span> }'
         ];
         for (let line of whoamiOutput) {
             await addOutputLineAsync(line, 300);
