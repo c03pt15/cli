@@ -905,7 +905,7 @@ Tip: Right - click the link above and select 'Save link as...' for direct downlo
                     const logoutLine = document.createElement('div');
                     logoutLine.className = 'terminal-line';
                     const color = message.color || primaryColor;
-                    logoutLine.innerHTML = `< span style = "color: ${color};" > ${message.text}</span > `;
+                    logoutLine.innerHTML = `<span style="color: ${color};">${message.text}</span>`;
                     terminal.appendChild(logoutLine);
                     autoScrollDown();
 
@@ -1011,7 +1011,7 @@ Available themes: green, orange, yellow`;
                     const resetLine = document.createElement('div');
                     resetLine.className = 'terminal-line';
                     const color = message.color || '#00ff00';
-                    resetLine.innerHTML = `< span style = "color: ${color};" > ${message.text}</span > `;
+                    resetLine.innerHTML = `<span style="color: ${color};">${message.text}</span>`;
                     terminal.appendChild(resetLine);
                     autoScrollDown();
 
