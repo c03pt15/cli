@@ -1203,4 +1203,42 @@ input.addEventListener('blur', () => {
 
 window.addEventListener('resize', updateCursorPosition);
 
+// Title Animation
+(() => {
+    const name = "Ghislain Girard";
+    const cursorChar = "▌";
 
+    let letterIndex = 0;
+    let interval;
+
+    function startTypingPhase() {
+        letterIndex = 0;
+        // Start interval for typing
+        interval = setInterval(() => {
+            // Ensure we always have at least one character + cursor to avoid empty title "filename" flash
+            // But initially we can start with just the first char if needed, or just cursor if it doesn't flash.
+            // User reported cursor->filename flash, so let's try starting typing.
+
+            const currentText = name.slice(0, letterIndex);
+            document.title = currentText + cursorChar;
+
+            letterIndex++;
+
+            if (letterIndex > name.length + 1) { // +1 to let full name + cursor sit for a moment
+                clearInterval(interval);
+                startBlinkingPhase();
+            }
+        }, 150);
+    }
+
+    function startBlinkingPhase() {
+        let showCursor = true;
+        setInterval(() => {
+            showCursor = !showCursor;
+            document.title = name + (showCursor ? cursorChar : "");
+        }, 1000);
+    }
+
+    // Start immediately with typing
+    startTypingPhase();
+})();
